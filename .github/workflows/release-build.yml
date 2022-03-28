@@ -11,8 +11,8 @@ jobs:
     name: Build & Publish to NuGet
     environment: nuget
     env:
-      solution-path: './src/AspNetCore FontAwesome Tag Helpers.sln'
-      repository: 'aspnetcore.utilities.fontawesometaghelpers'
+      solution-path: './src/AspNetCore Bootstrap Tag Helpers.sln'
+      repository: 'aspnetcore.utilities.bootstraptaghelpers'
       organization: 'IowaComputerGurus'
     steps:
     - uses: actions/checkout@v2

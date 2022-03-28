@@ -4,61 +4,46 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Xunit;
 
-namespace ICG.AspNetCore.Utilities.FontAwesomeTagHelpers.Tests
+namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Tests
 {
-    public class BoolFontAwesomeIconTagHelperTests
+    public class AlertTagHelperTests
     {
         [Theory]
-        [InlineData(false, "fas fa-times text-danger")]
-        [InlineData(true, "fas fa-check text-success")]
-        public void ShouldRenderProperIconClass_WithDefaultConfiguration(bool value, string expectedClass)
+        [InlineData(BootstrapColor.Primary, "alert alert-primary")]
+        [InlineData(BootstrapColor.Secondary, "alert alert-secondary")]
+        [InlineData(BootstrapColor.Success, "alert alert-success")]
+        [InlineData(BootstrapColor.Warning, "alert alert-warning")]
+        [InlineData(BootstrapColor.Info, "alert alert-info")]
+        [InlineData(BootstrapColor.Danger, "alert alert-danger")]
+        public void Should_Render_ProperClass(BootstrapColor color, string expectedClass)
         {
             //Arrange
             var context = MakeTagHelperContext();
             var output = MakeTagHelperOutput(" ");
 
             //Act
-            var helper = new BoolFontAwesomeIconTagHelper{Value = value};
+            var helper = new AlertTagHelper() { AlertColor = color};
             helper.Process(context, output);
 
             //Assert
-            Assert.Equal("span", output.TagName);
+            Assert.Equal("div", output.TagName);
             Assert.Equal(expectedClass, output.Attributes["class"].Value);
         }
 
-        [Theory]
-        [InlineData(false, "fas fa-circle text-success", "fas fa-circle text-warning", "fas fa-circle text-warning")]
-        [InlineData(true, "fas fa-circle text-success", "fas fa-circle text-warning", "fas fa-circle text-success")]
-        public void ShouldRenderProperIconClass_WithCustomConfiguration(bool value, string yesClass, string noClass,
-            string expectedClass)
+        [Fact]
+        public void Should_Render_With_RoleAdded()
         {
             //Arrange
             var context = MakeTagHelperContext();
             var output = MakeTagHelperOutput(" ");
 
             //Act
-            var helper = new BoolFontAwesomeIconTagHelper{ Value = value, FalseIconClass = noClass, TrueIconClass = yesClass};
+            var helper = new AlertTagHelper() { AlertColor = BootstrapColor.Info };
             helper.Process(context, output);
 
             //Assert
-            Assert.Equal("span", output.TagName);
-            Assert.Equal(expectedClass, output.Attributes["class"].Value);
-        }
-
-        [Theory]
-        [InlineData(false, "i")]
-        public void ShouldRenderProperTagName_WithCustomTagName(bool value, string tagName)
-        {
-            //Arrange
-            var context = MakeTagHelperContext();
-            var output = MakeTagHelperOutput(" ");
-
-            //Act
-            var helper = new BoolFontAwesomeIconTagHelper { Value = value, Tag = tagName };
-            helper.Process(context, output);
-
-            //Assert
-            Assert.Equal(tagName, output.TagName);
+            Assert.Equal("div", output.TagName);
+            Assert.Equal("alert", output.Attributes["role"].Value);
         }
 
         private TagHelperContext MakeTagHelperContext(TagHelperAttributeList attributes = null)
@@ -66,7 +51,7 @@ namespace ICG.AspNetCore.Utilities.FontAwesomeTagHelpers.Tests
             attributes = attributes ?? new TagHelperAttributeList();
 
             return new TagHelperContext(
-                tagName: "span",
+                tagName: "div",
                 allAttributes: attributes,
                 items: new Dictionary<object, object>(),
                 uniqueId: Guid.NewGuid().ToString("N"));
