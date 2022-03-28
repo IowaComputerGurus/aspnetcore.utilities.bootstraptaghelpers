@@ -40,17 +40,17 @@ public class FormTextInputTagHelper : TagHelper
     /// <param name="output"></param>
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
-        //Create wrapping element
-        var elementBuilder = new TagBuilder("div");
-        elementBuilder.Attributes.Add("class", "form-group");
-
+        //Modify the wrapping tag
+        output.TagName = "div";
+        output.Attributes.Add("class", "form-group");
+        
         //Add the label
         var label = _generator.GenerateLabel(
             ViewContext,
             For.ModelExplorer,
             For.Name, null,
             new { @class = "control-label" });
-        elementBuilder.InnerHtml.AppendHtml(label);
+        output.Content.AppendHtml(label);
 
         //Add the textbox
         var textBox = _generator.GenerateTextBox(ViewContext,
@@ -59,7 +59,7 @@ public class FormTextInputTagHelper : TagHelper
             For.Model,
             null,
             new { @class = "form-control" });
-        elementBuilder.InnerHtml.AppendHtml(textBox);
+        output.Content.AppendHtml(textBox);
 
         //Add validation messages
         var validationMsg = _generator.GenerateValidationMessage(
@@ -69,9 +69,6 @@ public class FormTextInputTagHelper : TagHelper
             null,
             ViewContext.ValidationMessageElement,
             new { @class = "text-danger" });
-        elementBuilder.InnerHtml.AppendHtml(validationMsg);
-
-        //Set the element as the content for the helper
-        output.Content.SetHtmlContent(elementBuilder);
+        output.Content.AppendHtml(validationMsg);
     }
 }
