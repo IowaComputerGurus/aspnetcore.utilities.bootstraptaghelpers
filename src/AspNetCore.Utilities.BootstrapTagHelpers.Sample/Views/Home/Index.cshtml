@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
+
+@{
     ViewData["Title"] = "FontAwesome Tag Helper Demos";
 }
 
@@ -82,54 +84,9 @@
     </tbody>
 </table>
 
+<h2>Text Input Helper</h2>
 
-<h2>int-font-awesome-icon</h2>
-
-<p>Renders a nullable int as a Font Awesome icon when null</p>
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Example</th>
-            <th>Display</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Null Value</th>
-            <td><int-font-awesome-icon value="null" /></td>
-            <td>
-                <code>
-                    &lt;int-font-awesome-icon value="null" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Not Null Value</th>
-            <td><int-font-awesome-icon value="15" /></td>
-            <td>
-                <code>
-                    &lt;int-font-awesome-icon value="15" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Null Custom Icon</th>
-            <td><int-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
-            <td>
-                <code>
-                    &lt;int-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
-                </code>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-
-<h2>decimal-font-awesome-icon</h2>
-
-<p>Renders a nullable decimal as a Font Awesome icon when null</p>
+<p>This is a helper for rendering standard bootstrap fom inputs, using ASP.NET Model Binding.</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -141,129 +98,23 @@
     </thead>
     <tbody>
         <tr>
-            <th>Null Value</th>
-            <td><decimal-font-awesome-icon value="null" /></td>
+            <th>Name Field</th>
+            <td><form-text-input asp-for="Name"></form-text-input></td>
             <td>
                 <code>
-                    &lt;decimal-font-awesome-icon value="null" /&gt;
+                    &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
                 </code>
             </td>
         </tr>
         <tr>
-            <th>Not Null Value</th>
-            <td> <decimal-font-awesome-icon value="15.99m" /></td>
+            <th>Email Field</th>
+            <td><form-text-input asp-for="Email"></form-text-input></td>
             <td>
                 <code>
-                    &lt;decimal-font-awesome-icon value="15" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Formatted Value</th>
-            <td><decimal-font-awesome-icon value="15.99m" format="C" /></td>
-            <td>
-                <code>
-                    &lt;decimal-font-awesome-icon value="15" format="C" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Custom Null</th>
-            <td><decimal-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
-            <td>
-                <code>
-                    &lt;decimal-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
+                    &lt;form-text-input asp-for=&quot;Email&quot;&gt;&lt;/form-text-input&gt;
                 </code>
             </td>
         </tr>
     </tbody>
 </table>
 
-
-<h2>date-time-font-awesome-icon</h2>
-
-<p>Renders a nullable datetime as a Font Awesome icon when null</p>
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Example</th>
-            <th>Display</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Null Value</th>
-            <td><date-time-font-awesome-icon value="null" /></td>
-            <td>
-                <code>
-                    &lt;date-time-font-awesome-icon value="null" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Not Null Value</th>
-            <td><date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" /></td>
-            <td>
-                <code>
-                    &lt;date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Formatted Value</th>
-            <td><date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" format="MM/dd/yyyy" /></td>
-            <td>
-                <code>
-                    &lt;date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" format="MM/dd/yyyy" /&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Custom Null</th>
-            <td><date-time-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
-            <td>
-                <code>
-                    &lt;date-time-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
-                </code>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<h2>string-font-awesome-icon</h2>
-
-<p>Renders a string as a Font Awesome icon when null/empty</p>
-
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>Example</th>
-            <th>Display</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Null Value</th>
-            <td><string-font-awesome-icon value="" /></td>
-            <td><code>&lt;string-font-awesome-icon value="" /&gt;</code></td>
-        </tr>
-        <tr>
-            <th>With Value</th>
-            <td><string-font-awesome-icon value="Testing!" /></td>
-            <td><code>&lt;string-font-awesome-icon value="Testing!" /&gt;</code></td>
-        </tr>
-        <tr>
-            <th>Custom Null</th>
-            <td><string-font-awesome-icon value="" null-value-icon-class="fas fa-plus text-danger" /></td>
-            <td>
-                <code>
-                    &lt;string-font-awesome-icon value=""
-                    null-value-icon-class="fas fa-plus text-danger" /&gt;
-                </code>
-            </td>
-        </tr>
-    </tbody>
-</table>
