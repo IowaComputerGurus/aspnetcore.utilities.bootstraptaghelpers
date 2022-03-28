@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "FontAwesome Tag Helper Demos";
+}
+
+<h1>TagHelper Demos</h1>
+
+<p>This page shows examples of usage of all included tag helpers within this library.</p>
+
+<h2>bool-font-awesome-icon</h2>
+
+<p>Renders a bool as a Font Awesome Icon</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>True Value</th>
+            <td><bool-font-awesome-icon value="true" /></td>
+            <td>
+                <code>
+                    &lt;bool-font-awesome-icon value="true" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>False Value</th>
+            <td><bool-font-awesome-icon value="false" /></td>
+            <td>
+                <code>
+                    &lt;bool-font-awesome-icon value="true" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>False w/ Custom Icon</th>
+            <td><bool-font-awesome-icon value="false" false-icon-class="fas fa-clock text-danger" /></td>
+            <td>
+                <code>
+                    &lt;bool-font-awesome-icon value="true" false-icon-class="fas fa-clock text-danger" /&gt;
+                </code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2>int-font-awesome-icon</h2>
+
+<p>Renders a nullable int as a Font Awesome icon when null</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Null Value</th>
+            <td><int-font-awesome-icon value="null" /></td>
+            <td>
+                <code>
+                    &lt;int-font-awesome-icon value="null" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Not Null Value</th>
+            <td><int-font-awesome-icon value="15" /></td>
+            <td>
+                <code>
+                    &lt;int-font-awesome-icon value="15" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Null Custom Icon</th>
+            <td><int-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
+            <td>
+                <code>
+                    &lt;int-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
+                </code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2>decimal-font-awesome-icon</h2>
+
+<p>Renders a nullable decimal as a Font Awesome icon when null</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Null Value</th>
+            <td><decimal-font-awesome-icon value="null" /></td>
+            <td>
+                <code>
+                    &lt;decimal-font-awesome-icon value="null" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Not Null Value</th>
+            <td> <decimal-font-awesome-icon value="15.99m" /></td>
+            <td>
+                <code>
+                    &lt;decimal-font-awesome-icon value="15" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Formatted Value</th>
+            <td><decimal-font-awesome-icon value="15.99m" format="C" /></td>
+            <td>
+                <code>
+                    &lt;decimal-font-awesome-icon value="15" format="C" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Custom Null</th>
+            <td><decimal-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
+            <td>
+                <code>
+                    &lt;decimal-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
+                </code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2>date-time-font-awesome-icon</h2>
+
+<p>Renders a nullable datetime as a Font Awesome icon when null</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Null Value</th>
+            <td><date-time-font-awesome-icon value="null" /></td>
+            <td>
+                <code>
+                    &lt;date-time-font-awesome-icon value="null" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Not Null Value</th>
+            <td><date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" /></td>
+            <td>
+                <code>
+                    &lt;date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Formatted Value</th>
+            <td><date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" format="MM/dd/yyyy" /></td>
+            <td>
+                <code>
+                    &lt;date-time-font-awesome-icon value="new DateTime(2022, 02, 02, 10,30,00)" format="MM/dd/yyyy" /&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Custom Null</th>
+            <td><date-time-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /></td>
+            <td>
+                <code>
+                    &lt;date-time-font-awesome-icon value="null" null-value-icon-class="fas fa-times text-danger" /&gt;
+                </code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>string-font-awesome-icon</h2>
+
+<p>Renders a string as a Font Awesome icon when null/empty</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Null Value</th>
+            <td><string-font-awesome-icon value="" /></td>
+            <td><code>&lt;string-font-awesome-icon value="" /&gt;</code></td>
+        </tr>
+        <tr>
+            <th>With Value</th>
+            <td><string-font-awesome-icon value="Testing!" /></td>
+            <td><code>&lt;string-font-awesome-icon value="Testing!" /&gt;</code></td>
+        </tr>
+        <tr>
+            <th>Custom Null</th>
+            <td><string-font-awesome-icon value="" null-value-icon-class="fas fa-plus text-danger" /></td>
+            <td>
+                <code>
+                    &lt;string-font-awesome-icon value=""
+                    null-value-icon-class="fas fa-plus text-danger" /&gt;
+                </code>
+            </td>
+        </tr>
+    </tbody>
+</table>
