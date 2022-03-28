@@ -51,9 +51,12 @@ public class AlertTagHelper : TagHelper
 
         var buttonBuilder = new TagBuilder("button");
         buttonBuilder.Attributes.Add("type", "button");
-        buttonBuilder.Attributes.Add("class", "btn-close");
-        buttonBuilder.Attributes.Add("data-bs-dismiss", "alert");
+        buttonBuilder.Attributes.Add("class", "close");
+        buttonBuilder.Attributes.Add("data-dismiss", "alert");
         buttonBuilder.Attributes.Add("aria-label", "Close");
+        var hiddenSpan = new TagBuilder("span");
+        hiddenSpan.InnerHtml.AppendHtml("&times;");
+        buttonBuilder.InnerHtml.AppendHtml(hiddenSpan);
 
         //Get existing content
         var existing = await output.GetChildContentAsync();
