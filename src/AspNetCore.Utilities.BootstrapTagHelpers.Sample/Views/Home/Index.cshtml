@@ -6,9 +6,9 @@
 
 <p>This page shows examples of usage of all included tag helpers within this library.</p>
 
-<h2>bool-font-awesome-icon</h2>
+<h2>alert</h2>
 
-<p>Renders a bool as a Font Awesome Icon</p>
+<p>Renders a Alert</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -20,29 +20,62 @@
     </thead>
     <tbody>
         <tr>
-            <th>True Value</th>
-            <td><bool-font-awesome-icon value="true" /></td>
+            <th>Primary</th>
+            <td>
+                <alert alert-color="Primary">
+                    This is a primary alert!  Yay
+                </alert>
+            </td>
             <td>
                 <code>
-                    &lt;bool-font-awesome-icon value="true" /&gt;
+                    &lt;alert alert-color=&quot;Primary&quot;&gt;
+                        This is a primary alert!  Yay
+                    &lt;/alert&gt;
                 </code>
             </td>
         </tr>
         <tr>
-            <th>False Value</th>
-            <td><bool-font-awesome-icon value="false" /></td>
+            <th>Secondary</th>
+            <td>
+                <alert alert-color="Secondary">
+                    This is a secondary alert!  Yay
+                </alert>
+            </td>
             <td>
                 <code>
-                    &lt;bool-font-awesome-icon value="true" /&gt;
+                    &lt;alert alert-color=&quot;Secondary&quot;&gt;
+                        This is a secondary alert!  Yay
+                    &lt;/alert&gt;
                 </code>
             </td>
         </tr>
         <tr>
-            <th>False w/ Custom Icon</th>
-            <td><bool-font-awesome-icon value="false" false-icon-class="fas fa-clock text-danger" /></td>
+            <th>Danger</th>
+            <td>
+                <alert alert-color="Danger">
+                    This is a danger alert!  With a <a href="#" class="alert-link">link!</a>.
+                </alert>
+            </td>
             <td>
                 <code>
-                    &lt;bool-font-awesome-icon value="true" false-icon-class="fas fa-clock text-danger" /&gt;
+                    &lt;alert alert-color=&quot;Danger&quot;&gt;
+                        This is a danger alert!  Yay
+                    &lt;/alert&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Warning Dismissible</th>
+            <td>
+                <alert alert-color="Warning" dismissible="true">
+                    This is a dismissable warning alert! 
+                </alert>
+            </td>
+            <td>
+                <code>
+                    &lt;alert alert-color=&quot;Warning&quot; dismissible=&quot;false&quot;&gt;
+                    This is a dismissable warning alert! 
+                &lt;/alert&gt;
                 </code>
             </td>
         </tr>
