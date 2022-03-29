@@ -1,7 +1,7 @@
 ﻿@model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
 
 @{
-    ViewData["Title"] = "FontAwesome Tag Helper Demos";
+    ViewData["Title"] = "Bootstrap Tag Helper Demos";
 }
 
 <h1>TagHelper Demos</h1>
@@ -120,15 +120,52 @@
 
 <h2>Modal Dialog</h2>
 
-<modal-toggle Target="testing">
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Example</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><modal-toggle Target="testing">
+                Launch Demo
+            </modal-toggle>
+
+            <modal id="testing">
+                <modal-header Title="Testing Modal Header">
+                    <modal-header-dismiss></modal-header-dismiss>
+                </modal-header>
+                <modal-body>
+                    <form-text-input asp-for="Name"></form-text-input>
+                </modal-body>
+                <modal-footer>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </modal-footer>
+            </modal></td>
+        <td>
+            <code>
+                <pre>&lt;modal-toggle Target=&quot;testing&quot;&gt;
     Launch Demo
-</modal-toggle>
+&lt;/modal-toggle&gt;
 
-<modal id="testing">
-    <modal-header Title="Testing Modal Header">
+&lt;modal id=&quot;testing&quot;&gt;
+    &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
+        &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
+    &lt;/modal-header&gt;
+    &lt;modal-body&gt;
+        &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
+    &lt;/modal-body&gt;
+    &lt;modal-footer&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+    &lt;/modal-footer&gt;
+&lt;/modal&gt;
+</pre>
+            </code>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-    </modal-header>
-    <modal-body>
-        <form-text-input asp-for="Name"></form-text-input>
-    </modal-body>
-</modal>
+
