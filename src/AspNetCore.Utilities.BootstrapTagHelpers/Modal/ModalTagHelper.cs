@@ -3,9 +3,12 @@ using ICG.AspNetCore.Utilities.BootstrapTagHelpers.Contexts;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers
+namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal
 {
-    [RestrictChildren("modal-body", "modal-header")]
+    /// <summary>
+    /// A high-level wrapper Tag Helper for rendering a bootstrap Modal
+    /// </summary>
+    [RestrictChildren("modal-body", "modal-header", "modal-footer")]
     public class ModalTagHelper : TagHelper
     {
         /// <summary>
@@ -13,6 +16,12 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers
         /// </summary>
         public bool StaticBackdrop { get; set; } = false;
 
+        /// <summary>
+        /// Renders the tag helper
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="output"></param>
+        /// <returns></returns>
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             var id = output.Attributes["id"].Value.ToString();

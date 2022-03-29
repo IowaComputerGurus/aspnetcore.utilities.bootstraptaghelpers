@@ -1,7 +1,7 @@
 ﻿@model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
 
 @{
-    ViewData["Title"] = "FontAwesome Tag Helper Demos";
+    ViewData["Title"] = "Bootstrap Tag Helper Demos";
 }
 
 <h1>TagHelper Demos</h1>
@@ -11,6 +11,82 @@
 <h2>alert</h2>
 
 <p>Renders a Alert</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Example</th>
+        <th>Display</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Primary</th>
+        <td>
+            <alert alert-color="Primary">
+                This is a primary alert!  Yay
+            </alert>
+        </td>
+        <td>
+            <code>
+                &lt;alert alert-color=&quot;Primary&quot;&gt;
+                This is a primary alert!  Yay
+                &lt;/alert&gt;
+            </code>
+        </td>
+    </tr>
+    <tr>
+        <th>Secondary</th>
+        <td>
+            <alert alert-color="Secondary">
+                This is a secondary alert!  Yay
+            </alert>
+        </td>
+        <td>
+            <code>
+                &lt;alert alert-color=&quot;Secondary&quot;&gt;
+                This is a secondary alert!  Yay
+                &lt;/alert&gt;
+            </code>
+        </td>
+    </tr>
+    <tr>
+        <th>Danger</th>
+        <td>
+            <alert alert-color="Danger">
+                This is a danger alert!  With a <a href="#" class="alert-link">link!</a>.
+            </alert>
+        </td>
+        <td>
+            <code>
+                &lt;alert alert-color=&quot;Danger&quot;&gt;
+                This is a danger alert!  Yay
+                &lt;/alert&gt;
+            </code>
+        </td>
+    </tr>
+    <tr>
+        <th>Warning Dismissible</th>
+        <td>
+            <alert alert-color="Warning" dismissible="true">
+                This is a dismissable warning alert! 
+            </alert>
+        </td>
+        <td>
+            <code>
+                &lt;alert alert-color=&quot;Warning&quot; dismissible=&quot;false&quot;&gt;
+                This is a dismissable warning alert! 
+                &lt;/alert&gt;
+            </code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>badge</h2>
+
+<p>Renders a Badge</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -24,63 +100,48 @@
         <tr>
             <th>Primary</th>
             <td>
-                <alert alert-color="Primary">
-                    This is a primary alert!  Yay
-                </alert>
+                <badge badge-color="Primary">
+                    This is a primary Badge
+                </badge>
             </td>
             <td>
                 <code>
-                    &lt;alert alert-color=&quot;Primary&quot;&gt;
-                        This is a primary alert!  Yay
-                    &lt;/alert&gt;
+                    &lt;badge badge-color=&quot;Primary&quot;&gt;
+                        This is a Primary Badge
+                    &lt;/badge&gt;
                 </code>
             </td>
         </tr>
-        <tr>
-            <th>Secondary</th>
-            <td>
-                <alert alert-color="Secondary">
-                    This is a secondary alert!  Yay
-                </alert>
-            </td>
-            <td>
-                <code>
-                    &lt;alert alert-color=&quot;Secondary&quot;&gt;
-                        This is a secondary alert!  Yay
-                    &lt;/alert&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Danger</th>
-            <td>
-                <alert alert-color="Danger">
-                    This is a danger alert!  With a <a href="#" class="alert-link">link!</a>.
-                </alert>
-            </td>
-            <td>
-                <code>
-                    &lt;alert alert-color=&quot;Danger&quot;&gt;
-                        This is a danger alert!  Yay
-                    &lt;/alert&gt;
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <th>Warning Dismissible</th>
-            <td>
-                <alert alert-color="Warning" dismissible="true">
-                    This is a dismissable warning alert! 
-                </alert>
-            </td>
-            <td>
-                <code>
-                    &lt;alert alert-color=&quot;Warning&quot; dismissible=&quot;false&quot;&gt;
-                    This is a dismissable warning alert! 
-                &lt;/alert&gt;
-                </code>
-            </td>
-        </tr>
+    <tr>
+        <th>Secondary</th>
+        <td>
+            <badge badge-color="Secondary">
+                This is a secondary Badge
+            </badge>
+        </td>
+        <td>
+            <code>
+                &lt;badge badge-color=&quot;Secondary&quot;&gt;
+                This is a Secondary Badge
+                &lt;/badge&gt;
+            </code>
+        </td>
+    </tr>
+    <tr>
+        <th>Danger</th>
+        <td>
+            <badge badge-color="Danger">
+                This is a Danger Badge
+            </badge>
+        </td>
+        <td>
+            <code>
+                &lt;badge badge-color=&quot;Danger&quot;&gt;
+                This is a Danger Badge
+                &lt;/badge&gt;
+            </code>
+        </td>
+    </tr>
     </tbody>
 </table>
 
@@ -120,15 +181,52 @@
 
 <h2>Modal Dialog</h2>
 
-<modal-toggle Target="testing">
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Example</th>
+        <th>Code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><modal-toggle Target="testing">
+                Launch Demo
+            </modal-toggle>
+
+            <modal id="testing">
+                <modal-header Title="Testing Modal Header">
+                    <modal-header-dismiss></modal-header-dismiss>
+                </modal-header>
+                <modal-body>
+                    <form-text-input asp-for="Name"></form-text-input>
+                </modal-body>
+                <modal-footer>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </modal-footer>
+            </modal></td>
+        <td>
+            <code>
+                <pre>&lt;modal-toggle Target=&quot;testing&quot;&gt;
     Launch Demo
-</modal-toggle>
+&lt;/modal-toggle&gt;
 
-<modal id="testing">
-    <modal-header Title="Testing Modal Header">
+&lt;modal id=&quot;testing&quot;&gt;
+    &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
+        &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
+    &lt;/modal-header&gt;
+    &lt;modal-body&gt;
+        &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
+    &lt;/modal-body&gt;
+    &lt;modal-footer&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+    &lt;/modal-footer&gt;
+&lt;/modal&gt;
+</pre>
+            </code>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
-    </modal-header>
-    <modal-body>
-        <form-text-input asp-for="Name"></form-text-input>
-    </modal-body>
-</modal>
+

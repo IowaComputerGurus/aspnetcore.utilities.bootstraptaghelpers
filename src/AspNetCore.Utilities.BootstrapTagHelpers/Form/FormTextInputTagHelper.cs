@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers;
+namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form;
 
 /// <summary>
 ///     TagHelper for rending Bootstrap form compliant input controls with support for ASP.NET Core model Binding.  Will

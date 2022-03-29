@@ -1,6 +1,6 @@
 # AspNetCore Bootstrap Tag Helpers ![](https://img.shields.io/github/license/iowacomputergurus/aspnetcore.utilities.bootstraptaghelpers.svg)
 
-A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap library easier to use for developers
+A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap 4.x library easier to use for developers
 
 ![Build Status](https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstraptaghelpers/actions/workflows/ci-build.yml/badge.svg)
 
@@ -30,3 +30,5 @@ You must modify your `_viewimports.cshtml` file by adding
 
 The following is a short example of the included tag helpers, for full information on the helpers included, please run the "Samples" app, contained within this repository
 
+* Alert
+* Modal
