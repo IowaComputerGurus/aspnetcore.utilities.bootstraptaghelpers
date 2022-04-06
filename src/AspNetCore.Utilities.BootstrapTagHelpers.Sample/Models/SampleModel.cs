@@ -13,5 +13,12 @@ namespace AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models
         [Required]
         [EmailAddress]
         public string Email { get; set; } = "";
+
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        [Required]
+        public string Password { get; set; } = "";
+
+        public string AdditionalInfo { get; set; } = "";
     }
 }

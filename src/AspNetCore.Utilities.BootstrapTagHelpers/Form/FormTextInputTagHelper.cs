@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -8,6 +9,7 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form;
 ///     TagHelper for rending Bootstrap form compliant input controls with support for ASP.NET Core model Binding.  Will
 ///     include Label, Field, and validation.
 /// </summary>
+[RestrictChildren("form-note")]
 public class FormTextInputTagHelper : TagHelper
 {
     private readonly IHtmlGenerator _generator;
@@ -16,7 +18,7 @@ public class FormTextInputTagHelper : TagHelper
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
     /// </summary>
     /// <param name="generator"></param>
-    public FormTextInputTagHelper(IHtmlGenerator generator)
+    public FormTextInputTagHelper(IHtmlGenerator generator) 
     {
         _generator = generator;
     }
@@ -38,12 +40,16 @@ public class FormTextInputTagHelper : TagHelper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
-    public override void Process(TagHelperContext context, TagHelperOutput output)
+    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         //Modify the wrapping tag
         output.TagName = "div";
         output.Attributes.Add("class", "form-group");
-        
+
+        //Get any inner content if it exists
+        var body = (await output.GetChildContentAsync()).GetContent();
+        body = body.Trim();
+
         //Add the label
         var label = _generator.GenerateLabel(
             ViewContext,
@@ -70,5 +76,8 @@ public class FormTextInputTagHelper : TagHelper
             ViewContext.ValidationMessageElement,
             new { @class = "text-danger" });
         output.Content.AppendHtml(validationMsg);
+
+        //Add existing stuff to bottom
+        output.Content.AppendHtml(body);
     }
 }
