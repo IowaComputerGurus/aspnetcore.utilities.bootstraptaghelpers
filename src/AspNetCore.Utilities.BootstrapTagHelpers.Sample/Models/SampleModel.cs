@@ -19,6 +19,7 @@ namespace AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models
         [Required]
         public string Password { get; set; } = "";
 
+        [Display(Name = "Additional Information")]
         public string AdditionalInfo { get; set; } = "";
     }
 }
