@@ -14,7 +14,7 @@ public class AlertTagHelper : TagHelper
     /// <summary>
     ///     What style of alert should this be
     /// </summary>
-    public BootstrapColor AlertColor { get; set; }
+    public BootstrapColor AlertColor { get; set; } = BootstrapColor.Info;
 
     /// <summary>
     ///     If set to true the element will not be shown
