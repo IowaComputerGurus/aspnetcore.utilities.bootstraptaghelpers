@@ -12,6 +12,12 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card;
 [RestrictChildren("card-header", "card-body")]
 public class CardTagHelper : TagHelper
 {
+    /// <summary>
+    /// Processes the tag helper
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="output"></param>
+    /// <returns></returns>
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         var id = output.Attributes["id"]?.Value?.ToString();

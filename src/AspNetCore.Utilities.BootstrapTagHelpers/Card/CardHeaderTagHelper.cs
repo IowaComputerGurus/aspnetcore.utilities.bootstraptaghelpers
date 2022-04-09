@@ -26,12 +26,17 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
         /// <param name="output"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             //Get the context information
             if (context.Items[typeof(CardContext)] is not CardContext cardContext)
                 throw new ArgumentException("CardContext is not specified in context parameter");
 
+            return ProcessAsyncInternal(context, output, cardContext);
+        }
+
+        private async Task ProcessAsyncInternal(TagHelperContext context, TagHelperOutput output, CardContext cardContext)
+        {
             //Setup basic tag information
             output.TagName = "div";
             output.AddClass("card-header", HtmlEncoder.Default);
@@ -44,14 +49,14 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
             headerContent.AddCssClass("d-md-flex");
             headerContent.AddCssClass("align-items-center");
             headerContent.AddCssClass("w-100");
-            
+
             // Render title if given
             if (!string.IsNullOrEmpty(Title))
             {
                 var titleTag = new TagBuilder("h5");
 
                 //Add custom id value if we can, otherwise it will not be unique
-                if(!string.IsNullOrEmpty(cardContext.Id))
+                if (!string.IsNullOrEmpty(cardContext.Id))
                     titleTag.Attributes.Add("id", $"{cardContext.Id}Label");
                 titleTag.InnerHtml.Append(Title);
 
