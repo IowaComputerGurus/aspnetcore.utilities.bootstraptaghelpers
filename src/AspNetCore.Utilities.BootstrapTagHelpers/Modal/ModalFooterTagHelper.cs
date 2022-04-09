@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal;
 
+/// <summary>
+/// Tag helper for rendering the footer of a modal dialog
+/// </summary>
 [HtmlTargetElement("modal-footer", ParentTag = "modal")]
 public class ModalFooterTagHelper : TagHelper
 {

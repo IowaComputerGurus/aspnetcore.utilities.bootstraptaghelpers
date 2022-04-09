@@ -7,7 +7,7 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Tests;
 
 public abstract class AbstractTagHelperTest
 {
-    public TagHelperContext MakeTagHelperContext(TagHelperAttributeList attributes = null)
+    public static TagHelperContext MakeTagHelperContext(TagHelperAttributeList attributes = null)
     {
         attributes = attributes ?? new TagHelperAttributeList();
 
@@ -18,7 +18,7 @@ public abstract class AbstractTagHelperTest
             Guid.NewGuid().ToString("N"));
     }
 
-    public TagHelperOutput MakeTagHelperOutput(
+    public static TagHelperOutput MakeTagHelperOutput(
         string tagName,
         TagHelperAttributeList attributes = null,
         string childContent = null)

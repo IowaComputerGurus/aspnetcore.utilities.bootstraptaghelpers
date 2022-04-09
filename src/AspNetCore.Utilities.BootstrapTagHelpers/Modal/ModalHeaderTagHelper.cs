@@ -25,13 +25,18 @@ public class ModalHeaderTagHelper : TagHelper
     /// <param name="output"></param>
     /// <returns></returns>
     /// <exception cref="ArgumentException"></exception>
-    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+    public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         //Get the context information
         var modalContext = context.Items[typeof(ModalContext)] as ModalContext;
         if (modalContext == null)
-            throw new ArgumentException();
+            throw new ArgumentException("ModalContext not present");
 
+        return ProcessAsyncInternal(context, output, modalContext);
+    }
+
+    private async Task ProcessAsyncInternal(TagHelperContext context, TagHelperOutput output, ModalContext modalContext)
+    {
         //Setup basic tag information
         output.TagName = "div";
         output.AddClass("modal-header", HtmlEncoder.Default);
