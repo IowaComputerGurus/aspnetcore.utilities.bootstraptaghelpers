@@ -1,4 +1,5 @@
-﻿@model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
+﻿@using ICG.AspNetCore.Utilities.BootstrapTagHelpers
+@model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
 
 @{
     ViewData["Title"] = "Bootstrap Tag Helper Demos";
@@ -151,22 +152,22 @@
 
 <table class="table table-striped table-hover">
     <thead>
-        <tr>
-            <th>Example</th>
-            <th>Display</th>
-            <th>Code</th>
-        </tr>
+    <tr>
+        <th>Example</th>
+        <th>Display</th>
+        <th>Code</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>Name Field</th>
-            <td><form-text-input asp-for="Name"></form-text-input></td>
-            <td>
-                <code>
-                    &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
-                </code>
-            </td>
-        </tr>
+    <tr>
+        <th>Name Field</th>
+        <td><form-text-input asp-for="Name"></form-text-input></td>
+        <td>
+            <code>
+                &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
+            </code>
+        </td>
+    </tr>
     <tr>
         <th>Email Field</th>
         <td><form-text-input asp-for="Email"></form-text-input></td>
@@ -192,9 +193,51 @@
         </form-text-input></td>
         <td>
             <code>&lt;form-text-input asp-for=&quot;AdditionalInfo&quot;&gt;
-            &lt;form-note&gt;Testing a custom note on this field&lt;/form-note&gt;
-        &lt;/form-text-input&gt;
+                &lt;form-note&gt;Testing a custom note on this field&lt;/form-note&gt;
+                &lt;/form-text-input&gt;
             </code>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Cards</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Example</th>
+        <td>Code</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <card>
+                <card-header ></card-header>
+            </card>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <card class="bg-success text-white" >
+                <card-header title="With Title"></card-header>
+            </card>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <card>
+                <card-header title="Testing All Options">
+                    <card-header-actions>
+                        <a href="https://www.google.com" class="btn btn-primary">Google</a>
+                        <a href="https://www.microsoft.com" class="btn btn-secondary">Microsoft</a>
+                    </card-header-actions>
+                </card-header>
+                <card-body>
+                    <p>This is my body</p>
+                </card-body>
+            </card>
         </td>
     </tr>
     </tbody>
@@ -215,7 +258,7 @@
                 Launch Demo
             </modal-toggle>
 
-            <modal id="testing">
+            <modal id="testing" class="im-weird">
                 <modal-header Title="Testing Modal Header">
                     <modal-header-dismiss></modal-header-dismiss>
                 </modal-header>

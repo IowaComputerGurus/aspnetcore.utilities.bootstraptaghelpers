@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 using ICG.AspNetCore.Utilities.BootstrapTagHelpers.Contexts;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal
@@ -26,7 +28,9 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal
         {
             var id = output.Attributes["id"].Value.ToString();
             output.TagName = "div";
-            output.Attributes.Add("class", "modal fade");
+            //Add classes to the existing tag, merging with custom ones added
+            output.AddClass("modal", HtmlEncoder.Default);
+            output.AddClass("fade", HtmlEncoder.Default);
             output.Attributes.Add("aria-labelledby", $"{id}Label");
             if (StaticBackdrop)
                 output.Attributes.Add("data-backdrop", "static");
