@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form;
 
@@ -20,6 +22,7 @@ public class FormNoteTagHelper : TagHelper
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = TagName;
-        output.Attributes.Add("class", "form-text text-muted");
+        output.AddClass("form-text", HtmlEncoder.Default);
+        output.AddClass("text-muted", HtmlEncoder.Default);
     }
 }
