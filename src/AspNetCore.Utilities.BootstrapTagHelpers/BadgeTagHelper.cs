@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers;
@@ -34,6 +35,7 @@ public class BadgeTagHelper : TagHelper
 
         //Add
         output.TagName = "span";
-        output.Attributes.Add("class", $"badge badge-{BadgeColor.ToString().ToLower()}");
+        output.AddClass("badge", HtmlEncoder.Default);
+        output.AddClass($"badge-{BadgeColor.ToString().ToLower()}", HtmlEncoder.Default);
     }
 }

@@ -23,7 +23,7 @@ public class BadgeTagHelperTests : AbstractTagHelperTest
 
         //Assert
         Assert.Equal("span", output.TagName);
-        Assert.Equal(expectedClass, output.Attributes["class"].Value);
+        Assert.Equal(expectedClass, output.Attributes["class"].Value.ToString());
     }
 
     [Fact]

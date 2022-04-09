@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using System.Threading.Tasks;
 using Xunit;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Tests;
@@ -28,7 +24,7 @@ public class AlertTagHelperTests : AbstractTagHelperTest
 
         //Assert
         Assert.Equal("div", output.TagName);
-        Assert.Equal(expectedClass, output.Attributes["class"].Value);
+        Assert.Equal(expectedClass, output.Attributes["class"].Value.ToString());
     }
 
     [Fact]

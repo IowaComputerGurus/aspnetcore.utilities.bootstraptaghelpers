@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers;
@@ -40,10 +42,14 @@ public class AlertTagHelper : TagHelper
 
         //Add
         output.TagName = "div";
-        output.Attributes.Add("class",
-            Dismissible
-                ? $"alert alert-{AlertColor.ToString().ToLower()} alert-dismissible fade show"
-                : $"alert alert-{AlertColor.ToString().ToLower()}");
+        output.AddClass("alert", HtmlEncoder.Default);
+        output.AddClass($"alert-{AlertColor.ToString().ToLower()}", HtmlEncoder.Default);
+        if (Dismissible)
+        {
+            output.AddClass("alert-dismissible", HtmlEncoder.Default);
+            output.AddClass("fade", HtmlEncoder.Default);
+            output.AddClass("show", HtmlEncoder.Default);
+        }
         output.Attributes.Add("role", "alert");
 
         if (!Dismissible)
@@ -51,7 +57,7 @@ public class AlertTagHelper : TagHelper
 
         var buttonBuilder = new TagBuilder("button");
         buttonBuilder.Attributes.Add("type", "button");
-        buttonBuilder.Attributes.Add("class", "close");
+        buttonBuilder.AddCssClass("close");
         buttonBuilder.Attributes.Add("data-dismiss", "alert");
         buttonBuilder.Attributes.Add("aria-label", "Close");
         var hiddenSpan = new TagBuilder("span");

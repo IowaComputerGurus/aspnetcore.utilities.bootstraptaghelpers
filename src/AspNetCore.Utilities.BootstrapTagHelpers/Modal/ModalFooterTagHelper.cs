@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal;
@@ -18,7 +20,7 @@ public class ModalFooterTagHelper : TagHelper
     {
         //Setup basic tag information
         output.TagName = "div";
-        output.Attributes.Add("class", "modal-footer");
+        output.AddClass("modal-footer", HtmlEncoder.Default);
 
         //Append other items, such as the dismiss button etc
         var body = (await output.GetChildContentAsync()).GetContent();

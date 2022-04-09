@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Modal;
 
@@ -11,6 +13,11 @@ public class ModalToggleTagHelper : TagHelper
     ///     The HTML id of the modal target
     /// </summary>
     public string Target { get; set; }
+
+    /// <summary>
+    ///     Defines the bootstrap color that should be used to render the button
+    /// </summary>
+    public BootstrapColor ToggleColor { get; set; } = BootstrapColor.Primary;
 
     /// <summary>
     ///     What type of tag should be rendered, by default it is a button
@@ -27,8 +34,10 @@ public class ModalToggleTagHelper : TagHelper
         output.TagName = TagName;
         output.Attributes.Add("data-toggle", "modal");
         output.Attributes.Add("data-target", $"#{Target}");
-        output.Attributes.Add("class", "btn btn-primary");
-        if(TagName == "button")
+        output.AddClass("btn", HtmlEncoder.Default);
+        output.AddClass($"btn-{ToggleColor.ToString().ToLower()}", HtmlEncoder.Default);
+
+        if (TagName == "button")
             output.Attributes.Add("type", "button");
     }
 }
