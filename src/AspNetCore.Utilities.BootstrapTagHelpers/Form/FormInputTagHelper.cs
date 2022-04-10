@@ -1,6 +1,5 @@
-﻿using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
@@ -11,11 +10,12 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form;
 ///     TagHelper for rending Bootstrap form compliant input controls with support for ASP.NET Core model Binding.  Will
 ///     include Label, Field, and validation.
 /// </summary>
+[ExcludeFromCodeCoverage] //Excluding from code coverage due to complexity 
 [RestrictChildren("form-note")]
 public class FormInputTagHelper : InputTagHelper
 {
     private readonly IHtmlGenerator _generator;
-    
+
     /// <summary>
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
     /// </summary>
@@ -49,9 +49,9 @@ public class FormInputTagHelper : InputTagHelper
             ViewContext,
             For.ModelExplorer,
             For.Name, null,
-            new { @class = "control-label" });
+            new {@class = "control-label"});
         output.PreElement.AppendHtml(label);
-        
+
 
         //Now, add validation message AFTER the field
         var validationMsg = _generator.GenerateValidationMessage(
@@ -60,9 +60,9 @@ public class FormInputTagHelper : InputTagHelper
             For.Name,
             null,
             ViewContext.ValidationMessageElement,
-            new { @class = "text-danger" });
+            new {@class = "text-danger"});
         output.PostElement.AppendHtml(validationMsg);
-        
+
         //Close wrapping div
         output.PostElement.AppendHtml("</div>");
     }
