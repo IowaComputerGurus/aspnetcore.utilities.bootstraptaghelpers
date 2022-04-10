@@ -32,10 +32,10 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
             if (context.Items[typeof(CardContext)] is not CardContext cardContext)
                 throw new ArgumentException("CardContext is not specified in context parameter");
 
-            return ProcessAsyncInternal(context, output, cardContext);
+            return ProcessAsyncInternal(output, cardContext);
         }
 
-        private async Task ProcessAsyncInternal(TagHelperContext context, TagHelperOutput output, CardContext cardContext)
+        private async Task ProcessAsyncInternal(TagHelperOutput output, CardContext cardContext)
         {
             //Setup basic tag information
             output.TagName = "div";

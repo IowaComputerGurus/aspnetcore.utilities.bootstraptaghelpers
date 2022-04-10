@@ -27,7 +27,7 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
             if (cardContext == null)
                 throw new ArgumentException("CardContext is not specified in context parameter");
 
-            return ProcessAsyncInternal(context, output);
+            return ProcessAsyncInternal(output);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
         /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
-        private async Task ProcessAsyncInternal(TagHelperContext context, TagHelperOutput output)
+        private static async Task ProcessAsyncInternal(TagHelperOutput output)
         {
             output.TagName = "div";
             output.AddClass("ml-auto", HtmlEncoder.Default);

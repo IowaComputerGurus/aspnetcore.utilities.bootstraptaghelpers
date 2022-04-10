@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Tests;
@@ -7,7 +8,7 @@ public class AlertTagHelperTests : AbstractTagHelperTest
 {
 
     [Fact]
-    public void Should_NotRender_If_Display_Is_Hidden()
+    public async Task Should_NotRender_If_Display_Is_Hidden()
     {
         //Arrange
         var context = MakeTagHelperContext();
@@ -15,7 +16,7 @@ public class AlertTagHelperTests : AbstractTagHelperTest
 
         //Act
         var helper = new AlertTagHelper() { HideDisplay = true };
-        helper.Process(context, output);
+        await helper.ProcessAsync(context, output);
 
         //Assert
         Assert.True(output.Content.IsEmptyOrWhiteSpace);

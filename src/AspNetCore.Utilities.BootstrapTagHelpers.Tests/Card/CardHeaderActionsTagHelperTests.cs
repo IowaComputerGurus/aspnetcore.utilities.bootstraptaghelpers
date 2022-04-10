@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card;
 using ICG.AspNetCore.Utilities.BootstrapTagHelpers.Contexts;
@@ -22,6 +23,22 @@ public class CardHeaderActionsTagHelperTests : AbstractTagHelperTest
 
         Assert.NotNull(exceptionResult);
         Assert.IsType<KeyNotFoundException>(exceptionResult);
+    }
+
+    [Fact]
+    public async Task Should_ThrowException_WhenContextIsNull()
+    {
+        //Arrange
+        var context = MakeTagHelperContext();
+        context.Items.Add(typeof(CardContext), null);
+        var output = MakeTagHelperOutput(" ");
+
+        //Act
+        var helper = new CardHeaderActionsTagHelper();
+        var exceptionResult = await Record.ExceptionAsync(() => helper.ProcessAsync(context, output));
+
+        Assert.NotNull(exceptionResult);
+        Assert.IsType<ArgumentException>(exceptionResult);
     }
 
     [Fact]

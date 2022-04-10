@@ -26,12 +26,28 @@ public class ModalTagHelper : TagHelper
     /// <returns></returns>
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        var id = output.Attributes["id"].Value.ToString();
+        //Obtain the id value to add to the context
+        var id = "";
+        if (output.Attributes.ContainsName("id"))
+            id = output.Attributes["id"].Value.ToString();
+
+        //Add the id to the context
+        var modalContext = new ModalContext { Id = id };
+        context.Items[typeof(ModalContext)] = modalContext;
+
+        //Get our child content before we mess with anything
+        var body = (await output.GetChildContentAsync()).GetContent();
+        body = body.Trim();
+
         output.TagName = "div";
+
         //Add classes to the existing tag, merging with custom ones added
         output.AddClass("modal", HtmlEncoder.Default);
         output.AddClass("fade", HtmlEncoder.Default);
-        output.Attributes.Add("aria-labelledby", $"{id}Label");
+        
+        if(!string.IsNullOrEmpty(id))
+            output.Attributes.Add("aria-labelledby", $"{id}Label");
+
         if (StaticBackdrop)
             output.Attributes.Add("data-backdrop", "static");
 
@@ -39,15 +55,8 @@ public class ModalTagHelper : TagHelper
         dialogWrapper.AddCssClass("modal-dialog");
         var dialogContent = new TagBuilder("div");
         dialogContent.AddCssClass("modal-content");
-        dialogWrapper.InnerHtml.AppendHtml(dialogContent);
-
-        //Setup context
-        var modalContext = new ModalContext {Id = id};
-        context.Items[typeof(ModalContext)] = modalContext;
-
-        //Render children now
-        var body = (await output.GetChildContentAsync()).GetContent();
         dialogContent.InnerHtml.AppendHtml(body);
+        dialogWrapper.InnerHtml.AppendHtml(dialogContent);
 
         output.Content.AppendHtml(dialogWrapper);
     }
