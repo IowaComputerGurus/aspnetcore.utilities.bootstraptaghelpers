@@ -21,5 +21,9 @@ namespace AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models
 
         [Display(Name = "Additional Information")]
         public string AdditionalInfo { get; set; } = "";
+
+        [Display(Name = "Country")]
+        [Required]
+        public int SelectedCountry { get; set; }
     }
 }

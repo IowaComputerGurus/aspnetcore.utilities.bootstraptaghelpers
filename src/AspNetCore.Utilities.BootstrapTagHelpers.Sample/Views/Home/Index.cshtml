@@ -1,4 +1,5 @@
 ﻿@using ICG.AspNetCore.Utilities.BootstrapTagHelpers
+@using AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models
 @model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
 
 @{
@@ -187,6 +188,7 @@
 
 <p>These are TagHelpers for working with form elements.</p>
 
+<form>
 <table class="table table-striped table-hover">
     <thead>
     <tr>
@@ -237,9 +239,20 @@
             </code>
         </td>
     </tr>
+    <tr>
+        <th>Select</th>
+        <td>
+            <form-select asp-for="SelectedCountry" asp-items="Html.GetEnumSelectList<SampleEnum>()" note="Please select your birth country">
+                <option value="">Select ....</option>
+                <form-note>Testing</form-note>
+            </form-select>
+        </td>
+    </tr>
     </tbody>
 </table>
 
+<input type="submit" />
+</form>
 <h2>Cards</h2>
 
 <table class="table table-striped table-hover">
@@ -332,4 +345,6 @@
     </tbody>
 </table>
 
-
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
