@@ -63,7 +63,6 @@ public class FormInputTagHelper : InputTagHelper
             new { @class = "text-danger" });
         output.PostElement.AppendHtml(validationMsg);
         
-
         //Close wrapping div
         output.PostElement.AppendHtml("</div>");
     }
