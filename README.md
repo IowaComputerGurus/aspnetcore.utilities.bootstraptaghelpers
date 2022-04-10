@@ -1,6 +1,6 @@
 # AspNetCore Bootstrap Tag Helpers ![](https://img.shields.io/github/license/iowacomputergurus/aspnetcore.utilities.bootstraptaghelpers.svg)
 
-A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap 4.x library easier to use for developers
+A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap 4.x library easier to use for developers.  Designed to reduce code effort substantially
 
 ![Build Status](https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstraptaghelpers/actions/workflows/ci-build.yml/badge.svg)
 
@@ -26,9 +26,47 @@ You must modify your `_viewimports.cshtml` file by adding
 @addTagHelper *, ICG.AspNetCore.Utilities.BootstrapTagHelpers
 ```
 
+## Usage
+
+The goal of these tag helpers is to reduce the reduntant coding, and compliance with various features of not only the boostrap library but form patterns.  Within the "Samples" folder there are examples of all included tag helpers.  However, the below shows a quick example of the power of these helps.
+
+### Before Usage
+
+The following markup is how you would output a model-bound field for a password field, including a note on complexity and validation.
+
+``` razor
+<div class="form-group">
+    <label asp-for="Password" class="control-label"></label>
+    <input asp-for="Password" class="form-control" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <small class="form-text text-muted">Must be 8 characters with letters & numbers</small>
+</div>
+```
+
+This is a total of *306* characters with spaces or *268* without.  Granted we get some help with auto-complete etc.
+
+### After Using
+
+You can take the entire above example and simplify it to the following
+
+``` razor
+<form-text-input asp-for="Password">
+    <form-note>Must be 8 characters with letters & numbers</form-note>
+</form-text-input>
+```
+
+This is a total of *126* characters with spaces or *112* without.  With intellisense, the actual typing characters are much less.  Your form view is also substantially reduced, making lines of code per form reduced.  For forms without notes the markup improvement is even better.
+
+
 ## Included Tag Helpers
 
-The following is a short example of the included tag helpers, for full information on the helpers included, please run the "Samples" app, contained within this repository
+At this time tag helpers have been implemented for the following elements.
 
-* Alert
-* Modal
+| Element | Description of Implementation |
+| --- | --- |
+| Alerts | Full support for implementation of alerts, including dismissable alerts |
+| Badges | Full support for implementation of badges of all Bootstrap color variariations |
+| Cards | Support for Card, Card Header, Card Header Actions, and Card body elements |
+| Input | Support for Form input controls for anything tied to the `<input>` tag including ASP.NET Code Model Binding & Validation |
+| Modals | Support for modal dialogs, including Modal Body, header, footer, dismiss, and toggles |
+| TextArea | Support for Form input controls tied to the `<textarea>` tag including ASP.NET Core Model Binding & Validation | 
