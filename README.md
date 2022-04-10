@@ -67,6 +67,7 @@ At this time tag helpers have been implemented for the following elements.
 | Alerts | Full support for implementation of alerts, including dismissable alerts |
 | Badges | Full support for implementation of badges of all Bootstrap color variariations |
 | Cards | Support for Card, Card Header, Card Header Actions, and Card body elements |
+| Environment Alert | An extension of the `<environment>` tag helper to render as an alert style |
 | Input | Support for Form input controls for anything tied to the `<input>` tag including ASP.NET Code Model Binding & Validation |
 | Modals | Support for modal dialogs, including Modal Body, header, footer, dismiss, and toggles |
 | TextArea | Support for Form input controls tied to the `<textarea>` tag including ASP.NET Core Model Binding & Validation | 
