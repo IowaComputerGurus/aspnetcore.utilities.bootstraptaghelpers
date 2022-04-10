@@ -32,10 +32,10 @@ public class ModalHeaderTagHelper : TagHelper
         if (modalContext == null)
             throw new ArgumentException("ModalContext not present");
 
-        return ProcessAsyncInternal(context, output, modalContext);
+        return ProcessAsyncInternal(output, modalContext);
     }
 
-    private async Task ProcessAsyncInternal(TagHelperContext context, TagHelperOutput output, ModalContext modalContext)
+    private async Task ProcessAsyncInternal(TagHelperOutput output, ModalContext modalContext)
     {
         //Setup basic tag information
         output.TagName = "div";
@@ -46,7 +46,8 @@ public class ModalHeaderTagHelper : TagHelper
         {
             var titleTag = new TagBuilder("h5");
             titleTag.Attributes.Add("class", "modal-title");
-            titleTag.Attributes.Add("id", $"{modalContext.Id}Label");
+            if(!string.IsNullOrEmpty(modalContext.Id))
+                titleTag.Attributes.Add("id", $"{modalContext.Id}Label");
             titleTag.InnerHtml.Append(Title);
             output.Content.AppendHtml(titleTag);
         }

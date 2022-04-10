@@ -30,7 +30,7 @@ public class FormInputTagHelper : InputTagHelper
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
-    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+    public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         //Call our base implementation
         base.Process(context, output);
