@@ -33,7 +33,6 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Card
         /// <summary>
         /// Internal implementation
         /// </summary>
-        /// <param name="context"></param>
         /// <param name="output"></param>
         /// <returns></returns>
         private static async Task ProcessAsyncInternal(TagHelperOutput output)

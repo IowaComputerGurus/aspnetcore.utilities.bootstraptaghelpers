@@ -1,4 +1,4 @@
-﻿@using ICG.AspNetCore.Utilities.BootstrapTagHelpers
+﻿@using AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models
 @model AspNetCore.Utilities.BootstrapTagHelpers.Sample.Models.SampleModel
 
 @{
@@ -26,13 +26,13 @@
         <th>Primary</th>
         <td>
             <alert alert-color="Primary">
-                This is a primary alert!  Yay
+                This is a primary alert! Yay
             </alert>
         </td>
         <td>
             <code>
                 &lt;alert alert-color=&quot;Primary&quot;&gt;
-                This is a primary alert!  Yay
+                This is a primary alert! Yay
                 &lt;/alert&gt;
             </code>
         </td>
@@ -41,13 +41,13 @@
         <th>Secondary</th>
         <td>
             <alert alert-color="Secondary">
-                This is a secondary alert!  Yay
+                This is a secondary alert! Yay
             </alert>
         </td>
         <td>
             <code>
                 &lt;alert alert-color=&quot;Secondary&quot;&gt;
-                This is a secondary alert!  Yay
+                This is a secondary alert! Yay
                 &lt;/alert&gt;
             </code>
         </td>
@@ -56,13 +56,13 @@
         <th>Danger</th>
         <td>
             <alert alert-color="Danger">
-                This is a danger alert!  With a <a href="#" class="alert-link">link!</a>.
+                This is a danger alert! With a <a href="#" class="alert-link">link!</a>.
             </alert>
         </td>
         <td>
             <code>
                 &lt;alert alert-color=&quot;Danger&quot;&gt;
-                This is a danger alert!  Yay
+                This is a danger alert! Yay
                 &lt;/alert&gt;
             </code>
         </td>
@@ -71,13 +71,13 @@
         <th>Warning Dismissible</th>
         <td>
             <alert alert-color="Warning" dismissible="true">
-                This is a dismissable warning alert! 
+                This is a dismissible warning alert!
             </alert>
         </td>
         <td>
             <code>
                 &lt;alert alert-color=&quot;Warning&quot; dismissible=&quot;false&quot;&gt;
-                This is a dismissable warning alert! 
+                This is a dismissible warning alert!
                 &lt;/alert&gt;
             </code>
         </td>
@@ -91,28 +91,28 @@
 
 <table class="table table-striped table-hover">
     <thead>
-        <tr>
-            <th>Example</th>
-            <th>Display</th>
-            <th>Code</th>
-        </tr>
+    <tr>
+        <th>Example</th>
+        <th>Display</th>
+        <th>Code</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <th>Primary</th>
-            <td>
-                <badge badge-color="Primary">
-                    This is a primary Badge
-                </badge>
-            </td>
-            <td>
-                <code>
-                    &lt;badge badge-color=&quot;Primary&quot;&gt;
-                        This is a Primary Badge
-                    &lt;/badge&gt;
-                </code>
-            </td>
-        </tr>
+    <tr>
+        <th>Primary</th>
+        <td>
+            <badge badge-color="Primary">
+                This is a primary Badge
+            </badge>
+        </td>
+        <td>
+            <code>
+                &lt;badge badge-color=&quot;Primary&quot;&gt;
+                This is a Primary Badge
+                &lt;/badge&gt;
+            </code>
+        </td>
+    </tr>
     <tr>
         <th>Secondary</th>
         <td>
@@ -146,9 +146,9 @@
     </tbody>
 </table>
 
-<h2>Text Input Helper</h2>
+<h2>Environment</h2>
 
-<p>This is a helper for rendering standard bootstrap fom inputs, using ASP.NET Model Binding.</p>
+<p>These are tag helpers for working with the environment tag to show environment informtion as an alert.</p>
 
 <table class="table table-striped table-hover">
     <thead>
@@ -160,49 +160,128 @@
     </thead>
     <tbody>
     <tr>
-        <th>Name Field</th>
-        <td><form-input asp-for="Name"></form-input></td>
+        <td>Non Prod Warning</td>
+        <td>
+            <environment-alert exclude="Production" alert-color="Warning">
+                This is a non production environment
+            </environment-alert>
+        </td>
         <td>
             <code>
-                &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
+                &lt;environment-alert exclude=&quot;Production&quot; alert-color=&quot;Warning&quot;&gt;
+                This is a non production environment
+                &lt;/environment-alert&gt;
             </code>
         </td>
     </tr>
     <tr>
-        <th>Email Field</th>
-        <td><form-input asp-for="Email"></form-input></td>
+        <td>Prod Warning</td>
+        <td>
+            <environment-alert include="Production" alert-color="Success">
+                You are in production
+            </environment-alert>
+        </td>
         <td>
             <code>
-                &lt;form-text-input asp-for=&quot;Email&quot;&gt;&lt;/form-text-input&gt;
-            </code>
-        </td>
-    </tr>
-    <tr>
-        <th>Password Field</th>
-        <td><form-input asp-for="Password"></form-input></td>
-        <td>
-            <code>
-                &lt;form-text-input asp-for=&quot;Password&quot;&gt;&lt;/form-text-input&gt;
-            </code>
-        </td>
-    </tr>
-    <tr>
-        <th>Additional Info</th>
-        <td><form-input asp-for="AdditionalInfo">
-            <form-note>Testing a custom note on this field</form-note>
-        </form-input></td>
-        <td>
-            <code>&lt;form-text-input asp-for=&quot;AdditionalInfo&quot;&gt;
-                &lt;form-note&gt;Testing a custom note on this field&lt;/form-note&gt;
-                &lt;/form-text-input&gt;
+                &lt;environment-alert include=&quot;Production&quot; alert-color=&quot;Success&quot;&gt;
+                You are in production
+                &lt;/environment-alert&gt;
             </code>
         </td>
     </tr>
     </tbody>
 </table>
 
+<h2>Form Helpers</h2>
+
+<p>These are TagHelpers for working with form elements.</p>
+
+<form>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Example</th>
+            <th>Display</th>
+            <th>Code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Name Field</th>
+            <td>
+                <form-input asp-for="Name"></form-input>
+            </td>
+            <td>
+                <code>
+                    &lt;form-text-input asp-for=&quot;Name&quot;&gt;&lt;/form-text-input&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Email Field</th>
+            <td>
+                <form-input asp-for="Email"></form-input>
+            </td>
+            <td>
+                <code>
+                    &lt;form-text-input asp-for=&quot;Email&quot;&gt;&lt;/form-text-input&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Password Field</th>
+            <td>
+                <form-input asp-for="Password">
+                    <form-note>Must be 8 characters with letters & numbers</form-note>
+                </form-input>
+            </td>
+            <td>
+                <code>
+                    &lt;form-text-input asp-for=&quot;Password&quot;&gt;&lt;/form-text-input&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Additional Info</th>
+            <td>
+                <form-text-area asp-for="AdditionalInfo">
+                    <form-note>Testing a custom note on this field</form-note>
+                </form-text-area>
+            </td>
+            <td>
+                <code>
+                    &lt;form-text-input asp-for=&quot;AdditionalInfo&quot;&gt;
+                    &lt;form-note&gt;Testing a custom note on this field&lt;/form-note&gt;
+                    &lt;/form-text-input&gt;
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <th>Select</th>
+            <td>
+                <form-select asp-for="SelectedCountry" asp-items="Html.GetEnumSelectList<SampleEnum>()" note="Please select your birth country">
+                    <option value="">Select ....</option>
+                    <form-note>Testing</form-note>
+                </form-select>
+            </td>
+            <td>
+                <code>
+                    &lt;form-select asp-for=&quot;SelectedCountry&quot; asp-items=&quot;Html.GetEnumSelectList&lt;SampleEnum&gt;()&quot; note=&quot;Please select your birth country&quot;&gt;
+                    &lt;option value=&quot;&quot;&gt;Select ....&lt;/option&gt;
+                    &lt;form-note&gt;Testing&lt;/form-note&gt;
+                    &lt;/form-select&gt;
+                </code>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" value="Click Here To Test Validation"/>
+</form>
+
 <h2>Cards</h2>
 
+<p>For rendering bootstrap cards</p>
 <table class="table table-striped table-hover">
     <thead>
     <tr>
@@ -217,12 +296,26 @@
                 <card-header ></card-header>
             </card>
         </td>
+        <td>
+            <code>
+                &lt;card&gt;
+                &lt;card-header &gt;&lt;/card-header&gt;
+                &lt;/card&gt;
+            </code>
+        </td>
     </tr>
     <tr>
         <td>
-            <card class="bg-success text-white" >
+            <card class="bg-success text-white">
                 <card-header title="With Title"></card-header>
             </card>
+        </td>
+        <td>
+            <code>
+                &lt;card class=&quot;bg-success text-white&quot;&gt;
+                &lt;card-header title=&quot;With Title&quot;&gt;&lt;/card-header&gt;
+                &lt;/card&gt;
+            </code>
         </td>
     </tr>
     <tr>
@@ -239,6 +332,21 @@
                 </card-body>
             </card>
         </td>
+        <td>
+            <code>
+                &lt;card&gt;
+                &lt;card-header title=&quot;Testing All Options&quot;&gt;
+                &lt;card-header-actions&gt;
+                &lt;a href=&quot;https://www.google.com&quot; class=&quot;btn btn-primary&quot;&gt;Google&lt;/a&gt;
+                &lt;a href=&quot;https://www.microsoft.com&quot; class=&quot;btn btn-secondary&quot;&gt;Microsoft&lt;/a&gt;
+                &lt;/card-header-actions&gt;
+                &lt;/card-header&gt;
+                &lt;card-body&gt;
+                &lt;p&gt;This is my body&lt;/p&gt;
+                &lt;/card-body&gt;
+                &lt;/card&gt;
+            </code>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -254,7 +362,8 @@
     </thead>
     <tbody>
     <tr>
-        <td><modal-toggle Target="testing">
+        <td>
+            <modal-toggle Target="testing">
                 Launch Demo
             </modal-toggle>
 
@@ -268,10 +377,10 @@
                 <modal-footer>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </modal-footer>
-            </modal></td>
+            </modal>
+        </td>
         <td>
-            <code>
-                <pre>&lt;modal-toggle Target=&quot;testing&quot;&gt;
+            <code>&lt;modal-toggle Target=&quot;testing&quot;&gt;
     Launch Demo
 &lt;/modal-toggle&gt;
 
@@ -286,11 +395,16 @@
         &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
     &lt;/modal-footer&gt;
 &lt;/modal&gt;
-</pre>
             </code>
         </td>
     </tr>
     </tbody>
 </table>
 
+<style>
+    code { white-space: pre;}
+</style>
 
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}
