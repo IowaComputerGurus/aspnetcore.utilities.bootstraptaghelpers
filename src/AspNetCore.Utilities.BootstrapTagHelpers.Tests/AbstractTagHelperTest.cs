@@ -35,4 +35,5 @@ public abstract class AbstractTagHelperTest
                 return Task.FromResult<TagHelperContent>(tagHelperContent);
             });
     }
+
 }
