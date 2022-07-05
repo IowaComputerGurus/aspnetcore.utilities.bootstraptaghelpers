@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ICG.AspNetCore.Utilities.BootstrapTagHelpers.Environment;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Moq;
 using Xunit;
@@ -41,13 +42,13 @@ public class EnvironmentAlertTagHelperTests : AbstractTagHelperTest
         //Arrange
         var existingAttributes = new TagHelperAttributeList(new List<TagHelperAttribute>
             {new("exclude", "Development")});
-        var context = MakeTagHelperContext(existingAttributes);
-        var output = MakeTagHelperOutput("environment", childContent: "My Alert Text");
+        var context = MakeTagHelperContext(attributes: existingAttributes);
+        var output = MakeTagHelperOutput("environment", childContent: new HtmlString("My Alert Text"));
         var mockEnvironment = new Mock<IWebHostEnvironment>();
         mockEnvironment.SetupProperty(g => g.EnvironmentName, "Development");
 
         //Act
-        var helper = new EnvironmentAlertTagHelper(mockEnvironment.Object){Exclude = "Development"};
+        var helper = new EnvironmentAlertTagHelper(mockEnvironment.Object) { Exclude = "Development" };
         helper.Process(context, output);
 
         //Assert
