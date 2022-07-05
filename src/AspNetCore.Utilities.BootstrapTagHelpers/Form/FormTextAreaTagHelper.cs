@@ -3,6 +3,7 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Threading.Tasks;
 
 namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form
 {
@@ -12,9 +13,10 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form
     /// </summary>
     [ExcludeFromCodeCoverage] //Excluding from code coverage due to complexity 
     [RestrictChildren("form-note")]
-    public class FormTextAreaTagHelper : TextAreaTagHelper
+    public class FormTextAreaTagHelper : TextAreaTagHelper, IFormElementMixin
     {
-        private readonly IHtmlGenerator _generator;
+        /// <inheritdoc />
+        public IHtmlGenerator HtmlGenerator { get; }
 
         /// <summary>
         /// Default constructor
@@ -22,7 +24,7 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form
         /// <param name="generator">Html Generator for field generation</param>
         public FormTextAreaTagHelper(IHtmlGenerator generator) : base(generator)
         {
-            _generator = generator;
+            HtmlGenerator = generator;
         }
 
         /// <summary>
@@ -30,10 +32,10 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form
         /// </summary>
         /// <param name="context"></param>
         /// <param name="output"></param>
-        public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             //The Microsoft implementation of the TextArea tag helper doesn't actually load sub-controls so we need to
-            var childContent = output.GetChildContentAsync().Result.GetContent();
+            var childContent = await output.GetChildContentAsync();
 
             //Call our base implementation
             base.Process(context, output);
@@ -45,33 +47,20 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form
             output.AddClass("form-control", HtmlEncoder.Default);
 
             //Add before div
-            output.PreElement.AppendHtml("<div class=\"form-group\">");
-
+            this.StartFormGroup(output);
+            
             //Generate our label
-            var label = _generator.GenerateLabel(
-                ViewContext,
-                For.ModelExplorer,
-                For.Name, null,
-                new { @class = "control-label" });
-            output.PreElement.AppendHtml(label);
-
+            this.AddLabel(output);
 
             //Now, add validation message AFTER the field
-            var validationMsg = _generator.GenerateValidationMessage(
-                ViewContext,
-                For.ModelExplorer,
-                For.Name,
-                null,
-                ViewContext.ValidationMessageElement,
-                new { @class = "text-danger" });
-            output.PostElement.AppendHtml(validationMsg);
+            this.AddValidationMessage(output);
 
             //Add child content if we have it
-            if(!string.IsNullOrEmpty(childContent))
+            if(!childContent.IsEmptyOrWhiteSpace)
                 output.PostElement.AppendHtml(childContent);
 
             //Close wrapping div
-            output.PostElement.AppendHtml("</div>");
+            this.EndFormGroup(output);
         }
     }
 }

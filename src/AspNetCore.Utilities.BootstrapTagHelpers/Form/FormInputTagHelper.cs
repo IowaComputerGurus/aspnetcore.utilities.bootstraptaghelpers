@@ -10,11 +10,11 @@ namespace ICG.AspNetCore.Utilities.BootstrapTagHelpers.Form;
 ///     TagHelper for rending Bootstrap form compliant input controls with support for ASP.NET Core model Binding.  Will
 ///     include Label, Field, and validation.
 /// </summary>
-[ExcludeFromCodeCoverage] //Excluding from code coverage due to complexity 
 [RestrictChildren("form-note")]
-public class FormInputTagHelper : InputTagHelper
+public class FormInputTagHelper : InputTagHelper, IFormElementMixin
 {
-    private readonly IHtmlGenerator _generator;
+    /// <inheritdoc />
+    public IHtmlGenerator HtmlGenerator { get; }
 
     /// <summary>
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
@@ -22,7 +22,7 @@ public class FormInputTagHelper : InputTagHelper
     /// <param name="generator"></param>
     public FormInputTagHelper(IHtmlGenerator generator) : base(generator)
     {
-        _generator = generator;
+        HtmlGenerator = generator;
     }
 
     /// <summary>
@@ -42,28 +42,15 @@ public class FormInputTagHelper : InputTagHelper
         output.AddClass("form-control", HtmlEncoder.Default);
 
         //Add before div
-        output.PreElement.AppendHtml("<div class=\"form-group\">");
+        this.StartFormGroup(output);
 
         //Generate our label
-        var label = _generator.GenerateLabel(
-            ViewContext,
-            For.ModelExplorer,
-            For.Name, null,
-            new {@class = "control-label"});
-        output.PreElement.AppendHtml(label);
-
+        this.AddLabel(output);
 
         //Now, add validation message AFTER the field
-        var validationMsg = _generator.GenerateValidationMessage(
-            ViewContext,
-            For.ModelExplorer,
-            For.Name,
-            null,
-            ViewContext.ValidationMessageElement,
-            new {@class = "text-danger"});
-        output.PostElement.AppendHtml(validationMsg);
+        this.AddValidationMessage(output);
 
         //Close wrapping div
-        output.PostElement.AppendHtml("</div>");
+        this.EndFormGroup(output);
     }
 }
