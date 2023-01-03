@@ -13,7 +13,7 @@ A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap 4.
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstraptaghelpers&metric=security_rating)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstraptaghelpers)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstraptaghelpers&metric=sqale_index)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstraptaghelpers)
 
-## Usage Expecations
+## Usage Expectations
 
 These tag helpers are only for markup display, your web project must properly include references to Bootstrap and must abide by all license and other requirements of Bootstrap for the functionality to be utilized here.  For more on how to include Bootstrap within your project please reference their documentation.
 
@@ -28,7 +28,7 @@ You must modify your `_viewimports.cshtml` file by adding
 
 ## Usage
 
-The goal of these tag helpers is to reduce the reduntant coding, and compliance with various features of not only the boostrap library but form patterns.  Within the "Samples" folder there are examples of all included tag helpers.  However, the below shows a quick example of the power of these helps.
+The goal of these tag helpers is to reduce the redundant coding, and compliance with various features of not only the Bootstrap library but form patterns.  Within the "Samples" folder there are examples of all included tag helpers.  However, the below shows a quick example of the power of these helps.
 
 ### Before Usage
 
@@ -64,8 +64,8 @@ At this time tag helpers have been implemented for the following elements.
 
 | Element | Description of Implementation |
 | --- | --- |
-| Alerts | Full support for implementation of alerts, including dismissable alerts |
-| Badges | Full support for implementation of badges of all Bootstrap color variariations |
+| Alerts | Full support for implementation of alerts, including dismissible alerts |
+| Badges | Full support for implementation of badges of all Bootstrap color variations |
 | Cards | Support for Card, Card Header, Card Header Actions, and Card body elements |
 | Environment Alert | An extension of the `<environment>` tag helper to render as an alert style |
 | Input | Support for Form input controls for anything tied to the `<input>` tag including ASP.NET Code Model Binding & Validation |

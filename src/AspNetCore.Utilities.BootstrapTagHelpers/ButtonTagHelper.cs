@@ -89,22 +89,22 @@ public class ButtonTagHelper : TagHelper
     public ButtonSize Size { get; set; } = ButtonSize.Normal;
 
     /// <inheritdoc/>
-    public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+    public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         if (HideDisplay)
         {
             output.SuppressOutput();
-            return Task.CompletedTask;
+            return;
         }
         output.TagName = "button";
-        output.Attributes.Add("type", new HtmlString(Type.ToString().ToLowerInvariant()));
+        output.Attributes.Add("type", Type.ToString().ToLowerInvariant());
         output.AddClass("btn", HtmlEncoder.Default);
         output.AddClass($"btn-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
-        output.Attributes.Add("role", new HtmlString("button"));
+        output.Attributes.Add("role", "button");
 
         if (!string.IsNullOrEmpty(Value))
         {
-            output.Attributes.Add("value", new HtmlString(Value));
+            output.Attributes.Add("value",Value);
         }
 
         if (Disabled)
@@ -127,7 +127,19 @@ public class ButtonTagHelper : TagHelper
         {
             output.AddClass("btn-block", HtmlEncoder.Default);
         }
-        return Task.CompletedTask;
+
+        var content = await output.GetChildContentAsync();
+        if (content.IsEmptyOrWhiteSpace)
+        {
+            output.TagMode = TagMode.SelfClosing;
+        }
+        else
+        {
+            output.TagMode = TagMode.StartTagAndEndTag;
+            output.Content = content;
+
+        }
+        return;
     }
 }
 
