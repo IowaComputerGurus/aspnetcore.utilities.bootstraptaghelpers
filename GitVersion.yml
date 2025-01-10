@@ -6,6 +6,12 @@ branches:
     tag: 'alpha'
     increment: Patch
     source-branches: []
+  hotfix:
+    regex: hotfix[/-]
+    source-branches: [main]
+    prevent-increment:
+      when-current-commit-tagged: true
+    is-release-branch: true
   pull-request:
     regex: (pull|pull\-requests|pr)[/-]
     tag: 'pr'
